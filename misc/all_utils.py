@@ -53,7 +53,7 @@ def gnd_marker_pub(gnd_label, marker_pub, cfg, color = "red"):
     length = int(cfg.grid_range[2] - cfg.grid_range[0]) # x direction
     width = int(cfg.grid_range[3] - cfg.grid_range[1])    # y direction
     gnd_marker = Marker()
-    gnd_marker.header.frame_id = "/kitti/base_link"
+    gnd_marker.header.frame_id = "kitti/base_link"
     gnd_marker.header.stamp = rospy.Time.now()
     gnd_marker.type = gnd_marker.LINE_LIST
     gnd_marker.action = gnd_marker.ADD
@@ -144,7 +144,7 @@ def np2ros_pub(points, pcl_pub, timestamp = None):
 
     if timestamp == None:
         timestamp = rospy.Time.now()
-    cloud_msg = ros_numpy.msgify(PointCloud2, points_arr,stamp =timestamp, frame_id = "/kitti/base_link")
+    cloud_msg = ros_numpy.msgify(PointCloud2, points_arr,stamp =timestamp, frame_id = "kitti/base_link")
     # rospy.loginfo("happily publishing sample pointcloud.. !")
     pcl_pub.publish(cloud_msg)
     # rospy.sleep(0.1)
@@ -203,7 +203,7 @@ def np2ros_pub_2(points, pcl_pub, timestamp, color):
 
     if timestamp == None:
         timestamp = rospy.Time.now()
-    cloud_msg = ros_numpy.msgify(PointCloud2, points_arr,stamp =timestamp, frame_id = "/kitti/base_link")
+    cloud_msg = ros_numpy.msgify(PointCloud2, points_arr,stamp =timestamp, frame_id = "kitti/base_link")
     # rospy.loginfo("happily publishing sample pointcloud.. !")
     pcl_pub.publish(cloud_msg)
 

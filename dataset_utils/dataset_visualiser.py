@@ -36,7 +36,7 @@ rospy.init_node('gnd_dataset_visualiser', anonymous=True)
 
 def gnd_marker_pub(gnd_label, marker_pub):
 	gnd_marker = Marker()
-	gnd_marker.header.frame_id = "/kitti/base_link"
+	gnd_marker.header.frame_id = "kitti/base_link"
 	gnd_marker.header.stamp = rospy.Time.now()
 	gnd_marker.type = gnd_marker.LINE_LIST
 	gnd_marker.action = gnd_marker.ADD
@@ -119,7 +119,7 @@ def np2ros_pub(points, pcl_pub):
 	points_arr['g'] = 255
 	points_arr['b'] = 255
 
-	cloud_msg = ros_numpy.msgify(PointCloud2, points_arr,stamp =rospy.Time.now(), frame_id = "/kitti/base_link")
+	cloud_msg = ros_numpy.msgify(PointCloud2, points_arr,stamp =rospy.Time.now(), frame_id = "kitti/base_link")
 	# rospy.loginfo("happily publishing sample pointcloud.. !")
 	pcl_pub.publish(cloud_msg)
 	# rospy.sleep(0.1)
@@ -160,8 +160,8 @@ def visualize_2D(gnd_label, points ,fig):
 
 
 def visualize_data(data_dir):
-	pcl_pub = rospy.Publisher("/kitti/reduced_velo", PointCloud2, queue_size=10)
-	marker_pub = rospy.Publisher("/kitti/ground_marker", Marker, queue_size=10)
+	pcl_pub = rospy.Publisher("kitti/reduced_velo", PointCloud2, queue_size=10)
+	marker_pub = rospy.Publisher("kitti/ground_marker", Marker, queue_size=10)
 	# markerArray = MarkerArray()
 	fig = plt.figure()
 	files = os.listdir(data_dir + "/reduced_velo/")

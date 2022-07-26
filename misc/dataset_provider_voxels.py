@@ -37,7 +37,7 @@ max_points = 100 # per voxel
 max_voxels = 3600
 
 rospy.init_node('gnd_data_provider', anonymous=True)
-pcl_pub = rospy.Publisher("/reduced_velo", PointCloud2, queue_size=10)
+pcl_pub = rospy.Publisher("reduced_velo", PointCloud2, queue_size=10)
 
 
 
@@ -58,7 +58,7 @@ def np2ros_pub(points):
 	points_arr['g'] = 255
 	points_arr['b'] = 255
 
-	cloud_msg = ros_numpy.msgify(PointCloud2, points_arr,stamp =rospy.Time.now(), frame_id = "/kitti/base_link")
+	cloud_msg = ros_numpy.msgify(PointCloud2, points_arr,stamp =rospy.Time.now(), frame_id = "kitti/base_link")
 	rospy.loginfo("happily publishing sample pointcloud.. !")
 	pcl_pub.publish(cloud_msg)
 	# rospy.sleep(0.1)

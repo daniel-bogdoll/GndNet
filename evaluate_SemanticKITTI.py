@@ -85,8 +85,8 @@ if args.visualize:
     from visualization_msgs.msg import Marker
 
     rospy.init_node('gnd_data_provider', anonymous=True)
-    pcl_pub = rospy.Publisher("/kitti/velo/pointcloud", PointCloud2, queue_size=10)
-    marker_pub_2 = rospy.Publisher("/kitti/gnd_marker_pred", Marker, queue_size=10)
+    pcl_pub = rospy.Publisher("kitti/velo/pointcloud", PointCloud2, queue_size=10)
+    marker_pub_2 = rospy.Publisher("kitti/gnd_marker_pred", Marker, queue_size=10)
 
 
 

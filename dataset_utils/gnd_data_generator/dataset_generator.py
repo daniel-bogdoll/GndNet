@@ -171,8 +171,8 @@ class listener(object):
 	def __init__(self):
 
 		# self.point_cloud_sub = message_filters.Subscriber("/kitti/classified_cloud", PointCloud2)
-		self.point_cloud_sub = message_filters.Subscriber("/kitti/raw/pointcloud", PointCloud2)
-		self.ground_marker_sub = message_filters.Subscriber('/kitti/ground_marker', Marker)
+		self.point_cloud_sub = message_filters.Subscriber("kitti/raw/pointcloud", PointCloud2)
+		self.ground_marker_sub = message_filters.Subscriber('kitti/ground_marker', Marker)
 
 		ts = ApproximateTimeSynchronizer([self.point_cloud_sub, self.ground_marker_sub],10, 0.1, allow_headerless=True)
 		ts.registerCallback(self.callback)

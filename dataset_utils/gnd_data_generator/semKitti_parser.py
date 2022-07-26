@@ -101,21 +101,21 @@ def broadcast_TF(pose,timestamp):
     br = tf.TransformBroadcaster()
     br.sendTransform((pose[0,3], pose[1,3], pose[2,3]), quat,
                      timestamp,
-                     "/kitti/zoe_odom_origin",
-                     "/kitti/world")
+                     "kitti/zoe_odom_origin",
+                     "kitti/world")
 
     # br.sendTransform((1.5, 0, 1.732), (0,0,0,1),
     # br.sendTransform((1.5, 0, 2.1), (0,0,0,1),
     br.sendTransform((-0.27, 0, 1.73), (0,0,0,1),
                      timestamp,
-                     "/kitti/velo_link",
-                     "/kitti/zoe_odom_origin")
+                     "kitti/velo_link",
+                     "kitti/zoe_odom_origin")
 
     # br.sendTransform((3.334, 0, 0.34), (0,0,0,1),
     br.sendTransform((2.48, 0, 0), (0,0,0,1),
                      timestamp,
-                     "/kitti/base_link",
-                     "/kitti/zoe_odom_origin")
+                     "kitti/base_link",
+                     "kitti/zoe_odom_origin")
 
 
 
@@ -144,8 +144,8 @@ def rotate_cloud(cloud, theta):
 
 def parse_semanticKitti(data_dir):
     rospy.init_node('gnd_data_provider', anonymous=True)
-    pcl_pub = rospy.Publisher("/kitti/velo/pointcloud", PointCloud2, queue_size=10)
-    pcl_pub2 = rospy.Publisher("/kitti/raw/pointcloud", PointCloud2, queue_size=10)
+    pcl_pub = rospy.Publisher("kitti/velo/pointcloud", PointCloud2, queue_size=10)
+    pcl_pub2 = rospy.Publisher("kitti/raw/pointcloud", PointCloud2, queue_size=10)
 
     velodyne_dir = data_dir + "velodyne/"
     label_dir = data_dir + 'labels/'

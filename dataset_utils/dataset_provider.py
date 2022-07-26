@@ -197,8 +197,8 @@ if __name__ == '__main__':
 	from utils.ros_utils import np2ros_pub, gnd_marker_pub
 	
 	rospy.init_node('gnd_data_provider', anonymous=True)
-	pcl_pub = rospy.Publisher("/kitti/reduced_velo", PointCloud2, queue_size=10)
-	marker_pub = rospy.Publisher("/kitti/gnd_marker", Marker, queue_size=10)
+	pcl_pub = rospy.Publisher("kitti/reduced_velo", PointCloud2, queue_size=10)
+	marker_pub = rospy.Publisher("kitti/gnd_marker", Marker, queue_size=10)
 	fig = plt.figure()
 	data_dir = '/home/anshul/es3cap/my_codes/GndNet/data/'
 	train_loader, valid_loader =  get_data_loaders(data_dir)

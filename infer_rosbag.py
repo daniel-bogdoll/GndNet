@@ -41,9 +41,9 @@ if use_cuda:
 
 
 rospy.init_node('gnd_data_provider', anonymous=True)
-pcl_pub = rospy.Publisher("/kitti/gndnet_segcloud", PointCloud2, queue_size=10)
-marker_pub_1 = rospy.Publisher("/kitti/ground_marker", Marker, queue_size=10)
-marker_pub_2 = rospy.Publisher("/kitti/gnd_marker_pred", Marker, queue_size=10)
+pcl_pub = rospy.Publisher("kitti/gndnet_segcloud", PointCloud2, queue_size=10)
+marker_pub_1 = rospy.Publisher("kitti/ground_marker", Marker, queue_size=10)
+marker_pub_2 = rospy.Publisher("kitti/gnd_marker_pred", Marker, queue_size=10)
 
 
 #############################################xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx#######################################
@@ -134,7 +134,7 @@ def callback(cloud_msg):
 
 
 def listener():
-    rospy.Subscriber("/kitti/velo/pointcloud", PointCloud2, callback, queue_size = 1)
+    rospy.Subscriber("kitti/velo/pointcloud", PointCloud2, callback, queue_size = 1)
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
 
